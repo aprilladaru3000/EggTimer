@@ -20,27 +20,40 @@
   animation: fadeIn 0.5s ease-out;
 }
 
-/* Telur melayang */
-.egg-bg::before, .egg-bg::after {
-  content: "🥚";
+/* Efek telur retak */
+.crack-egg {
   position: absolute;
-  font-size: 4rem;
-  opacity: 0.2;
-  animation: floatEgg 6s infinite ease-in-out;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2.5rem;
+  animation: fall-crack 1.2s ease-out forwards;
 }
-.egg-bg::before {
-  top: 20%;
-  left: 10%;
-}
-.egg-bg::after {
-  bottom: 15%;
-  right: 15%;
-  animation-delay: 3s;
+@keyframes fall-crack {
+  0% { opacity: 0; transform: translate(-50%, -50px) scale(0.8); }
+  50% { opacity: 1; transform: translate(-50%, 0) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, 50px) scale(0.9); }
 }
 
+/* Telur melayang */
+#eggBackground {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.floating-egg {
+  position: absolute;
+  opacity: 0.2;
+  animation: floatEgg linear infinite;
+}
 @keyframes floatEgg {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(10deg); }
+  0% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-30px) rotate(10deg); }
+  100% { transform: translateY(0) rotate(-10deg); }
 }
 
 /* Preset button */

@@ -31,6 +31,7 @@ function startTimer() {
       document.getElementById('alarm').play();
       showDoneMessage();
       animateDisplay();
+      crackEggAnimation();
     }
   }, 1000);
 }
@@ -77,3 +78,29 @@ function hideDoneMessage() {
   msg.classList.add('hidden');
   msg.classList.remove('fadeIn');
 }
+
+/* Efek telur retak */
+function crackEggAnimation() {
+  const display = document.getElementById('display');
+  const crack = document.createElement('div');
+  crack.className = 'crack-egg';
+  crack.textContent = '🥚💥';
+  display.appendChild(crack);
+  setTimeout(() => crack.remove(), 1500);
+}
+
+/* Buat telur melayang banyak */
+window.onload = function () {
+  const eggContainer = document.getElementById('eggBackground');
+  for (let i = 0; i < 15; i++) {
+    const egg = document.createElement('span');
+    egg.className = 'floating-egg';
+    egg.textContent = '🥚';
+    egg.style.left = Math.random() * 100 + '%';
+    egg.style.top = Math.random() * 100 + '%';
+    egg.style.fontSize = (Math.random() * 2 + 2) + 'rem';
+    egg.style.animationDuration = (Math.random() * 5 + 5) + 's';
+    egg.style.animationDelay = Math.random() * 5 + 's';
+    eggContainer.appendChild(egg);
+  }
+};

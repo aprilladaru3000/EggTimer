@@ -10,7 +10,7 @@
 <body class="bg-yellow-100 min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
 
   <!-- Telur melayang -->
-  <div class="egg-bg"></div>
+  <div class="egg-bg" id="eggBackground"></div>
 
   <div class="bg-white shadow-2xl rounded-3xl p-8 w-full max-w-md text-center relative z-10">
     <h1 class="text-4xl font-bold text-yellow-700 mb-4 drop-shadow-md">🥚 Egg Timer</h1>
@@ -32,7 +32,7 @@
     </div>
 
     <!-- Display -->
-    <div class="mb-4 text-5xl font-mono text-yellow-800" id="display">00:00</div>
+    <div class="mb-4 text-5xl font-mono text-yellow-800 relative" id="display">00:00</div>
     <div id="done-message" class="hidden text-green-600 font-bold text-lg mt-2">🥚 Telur selesai!</div>
 
     <!-- Progress -->
@@ -46,6 +46,7 @@
       <button onclick="resetTimer()" class="btn-main bg-gray-300 hover:bg-gray-400 text-gray-800">Reset</button>
     </div>
 
+    <!-- Audio -->
     <audio id="alarm" src="https://freesound.org/data/previews/316/316847_4939433-lq.mp3" preload="auto"></audio>
   </div>
 
