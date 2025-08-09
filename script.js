@@ -2,7 +2,6 @@ let timer;
 let totalSeconds = 0;
 let originalSeconds = 0;
 
-// Custom time slider
 function updateCustomTime(val) {
   document.getElementById('customTimeLabel').textContent = val;
 }
@@ -18,15 +17,16 @@ function selectPreset(minutes) {
 
 function startTimer() {
   if (totalSeconds <= 0) {
-    alert("Pilih preset terlebih dahulu!");
+    alert("Pilih preset atau set waktu terlebih dahulu!");
     return;
   }
   clearInterval(timer);
   timer = setInterval(() => {
-    totalSeconds--;
-    updateDisplay();
-    updateProgress();
-    if (totalSeconds <= 0) {
+    if (totalSeconds > 0) {
+      totalSeconds--;
+      updateDisplay();
+      updateProgress();
+    } else {
       clearInterval(timer);
       document.getElementById('alarm').play();
       showDoneMessage();
@@ -60,21 +60,20 @@ function updateProgress() {
   progressBar.style.width = `${percentage}%`;
 }
 
-// Animasi shake pada display
 function animateDisplay() {
   const display = document.getElementById('display');
   display.classList.add('shake');
   setTimeout(() => display.classList.remove('shake'), 700);
 }
 
-// Notifikasi visual selesai
 function showDoneMessage() {
   const msg = document.getElementById('done-message');
   msg.classList.remove('hidden');
-  msg.classList.add('animated');
-  setTimeout(() => msg.classList.remove('animated'), 1200);
+  msg.classList.add('fadeIn');
 }
+
 function hideDoneMessage() {
   const msg = document.getElementById('done-message');
   msg.classList.add('hidden');
+  msg.classList.remove('fadeIn');
 }

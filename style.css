@@ -1,3 +1,4 @@
+/* Animasi shake */
 @keyframes shake {
   0% { transform: translateX(0); }
   20% { transform: translateX(-5px); }
@@ -10,10 +11,55 @@
   animation: shake 0.6s;
 }
 
+/* Fade in */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
-#done-message.animated {
-  animation: fadeIn 1s;
+.fadeIn {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Telur melayang */
+.egg-bg::before, .egg-bg::after {
+  content: "🥚";
+  position: absolute;
+  font-size: 4rem;
+  opacity: 0.2;
+  animation: floatEgg 6s infinite ease-in-out;
+}
+.egg-bg::before {
+  top: 20%;
+  left: 10%;
+}
+.egg-bg::after {
+  bottom: 15%;
+  right: 15%;
+  animation-delay: 3s;
+}
+
+@keyframes floatEgg {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(10deg); }
+}
+
+/* Preset button */
+.preset-btn {
+  font-weight: bold;
+  padding: 1.5rem 0.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  border: 2px solid;
+  text-align: center;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+/* Tombol utama */
+.btn-main {
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
